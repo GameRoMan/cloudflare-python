@@ -171,12 +171,6 @@ class CustomProfile(BaseModel):
     allowed_match_count: int
     """Related DLP policies will trigger when the match count exceeds the number set."""
 
-    context_awareness: ContextAwareness
-    """
-    Scan the context of predefined entries to only return matches surrounded by
-    keywords.
-    """
-
     created_at: datetime
     """When the profile was created."""
 
@@ -195,6 +189,12 @@ class CustomProfile(BaseModel):
     ai_context_enabled: Optional[bool] = None
 
     confidence_threshold: Optional[Literal["low", "medium", "high", "very_high"]] = None
+
+    context_awareness: Optional[ContextAwareness] = None
+    """
+    Scan the context of predefined entries to only return matches surrounded by
+    keywords.
+    """
 
     description: Optional[str] = None
     """The description of the profile."""
