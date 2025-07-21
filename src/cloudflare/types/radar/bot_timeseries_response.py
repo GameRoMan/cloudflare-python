@@ -15,6 +15,7 @@ __all__ = [
     "MetaConfidenceInfoAnnotation",
     "MetaDateRange",
     "MetaUnit",
+    "BotTimeseriesResponseItem",
 ]
 
 
@@ -93,6 +94,12 @@ class Meta(BaseModel):
     """Measurement units for the results."""
 
 
+class BotTimeseriesResponseItem(BaseModel):
+    timestamps: List[datetime]
+
+    values: List[str]
+
+
 class BotTimeseriesResponse(BaseModel):
     meta: Meta
     """Metadata for the results."""
@@ -101,4 +108,4 @@ class BotTimeseriesResponse(BaseModel):
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
         # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> object: ...
+        def __getattr__(self, attr: str) -> BotTimeseriesResponseItem: ...
