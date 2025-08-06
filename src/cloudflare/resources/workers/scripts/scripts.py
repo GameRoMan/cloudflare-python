@@ -91,7 +91,7 @@ from .assets.assets import (
     AsyncAssetsResourceWithStreamingResponse,
 )
 from ...._base_client import AsyncPaginator, make_request_options
-from ....types.workers import script_delete_params, script_update_params
+from ....types.workers import script_list_params, script_delete_params, script_update_params
 from ....types.workers.script import Script
 from .script_and_version_settings import (
     ScriptAndVersionSettingsResource,
@@ -244,6 +244,7 @@ class ScriptsResource(SyncAPIResource):
         self,
         *,
         account_id: str,
+        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -256,6 +257,9 @@ class ScriptsResource(SyncAPIResource):
 
         Args:
           account_id: Identifier.
+
+          tags: Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where
+              allowed is 'yes' or 'no'.
 
           extra_headers: Send extra headers
 
@@ -271,7 +275,11 @@ class ScriptsResource(SyncAPIResource):
             f"/accounts/{account_id}/workers/scripts",
             page=SyncSinglePage[Script],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"tags": tags}, script_list_params.ScriptListParams),
             ),
             model=Script,
         )
@@ -509,6 +517,7 @@ class AsyncScriptsResource(AsyncAPIResource):
         self,
         *,
         account_id: str,
+        tags: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -521,6 +530,9 @@ class AsyncScriptsResource(AsyncAPIResource):
 
         Args:
           account_id: Identifier.
+
+          tags: Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where
+              allowed is 'yes' or 'no'.
 
           extra_headers: Send extra headers
 
@@ -536,7 +548,11 @@ class AsyncScriptsResource(AsyncAPIResource):
             f"/accounts/{account_id}/workers/scripts",
             page=AsyncSinglePage[Script],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"tags": tags}, script_list_params.ScriptListParams),
             ),
             model=Script,
         )
