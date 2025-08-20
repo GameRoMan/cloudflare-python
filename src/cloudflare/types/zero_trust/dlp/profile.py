@@ -16,6 +16,7 @@ __all__ = [
     "CustomProfileEntryCustomEntry",
     "CustomProfileEntryPredefinedEntry",
     "CustomProfileEntryPredefinedEntryConfidence",
+    "CustomProfileEntryPredefinedEntryVariant",
     "CustomProfileEntryIntegrationEntry",
     "CustomProfileEntryExactDataEntry",
     "CustomProfileEntryDocumentFingerprintEntry",
@@ -25,6 +26,7 @@ __all__ = [
     "PredefinedProfileEntryCustomEntry",
     "PredefinedProfileEntryPredefinedEntry",
     "PredefinedProfileEntryPredefinedEntryConfidence",
+    "PredefinedProfileEntryPredefinedEntryVariant",
     "PredefinedProfileEntryIntegrationEntry",
     "PredefinedProfileEntryExactDataEntry",
     "PredefinedProfileEntryDocumentFingerprintEntry",
@@ -34,6 +36,7 @@ __all__ = [
     "IntegrationProfileEntryCustomEntry",
     "IntegrationProfileEntryPredefinedEntry",
     "IntegrationProfileEntryPredefinedEntryConfidence",
+    "IntegrationProfileEntryPredefinedEntryVariant",
     "IntegrationProfileEntryIntegrationEntry",
     "IntegrationProfileEntryExactDataEntry",
     "IntegrationProfileEntryDocumentFingerprintEntry",
@@ -70,6 +73,12 @@ class CustomProfileEntryPredefinedEntryConfidence(BaseModel):
     """
 
 
+class CustomProfileEntryPredefinedEntryVariant(BaseModel):
+    topic_type: Literal["Intent", "Content"]
+
+    type: Literal["PromptTopic"]
+
+
 class CustomProfileEntryPredefinedEntry(BaseModel):
     id: str
 
@@ -82,6 +91,8 @@ class CustomProfileEntryPredefinedEntry(BaseModel):
     type: Literal["predefined"]
 
     profile_id: Optional[str] = None
+
+    variant: Optional[CustomProfileEntryPredefinedEntryVariant] = None
 
 
 class CustomProfileEntryIntegrationEntry(BaseModel):
@@ -229,6 +240,12 @@ class PredefinedProfileEntryPredefinedEntryConfidence(BaseModel):
     """
 
 
+class PredefinedProfileEntryPredefinedEntryVariant(BaseModel):
+    topic_type: Literal["Intent", "Content"]
+
+    type: Literal["PromptTopic"]
+
+
 class PredefinedProfileEntryPredefinedEntry(BaseModel):
     id: str
 
@@ -241,6 +258,8 @@ class PredefinedProfileEntryPredefinedEntry(BaseModel):
     type: Literal["predefined"]
 
     profile_id: Optional[str] = None
+
+    variant: Optional[PredefinedProfileEntryPredefinedEntryVariant] = None
 
 
 class PredefinedProfileEntryIntegrationEntry(BaseModel):
@@ -381,6 +400,12 @@ class IntegrationProfileEntryPredefinedEntryConfidence(BaseModel):
     """
 
 
+class IntegrationProfileEntryPredefinedEntryVariant(BaseModel):
+    topic_type: Literal["Intent", "Content"]
+
+    type: Literal["PromptTopic"]
+
+
 class IntegrationProfileEntryPredefinedEntry(BaseModel):
     id: str
 
@@ -393,6 +418,8 @@ class IntegrationProfileEntryPredefinedEntry(BaseModel):
     type: Literal["predefined"]
 
     profile_id: Optional[str] = None
+
+    variant: Optional[IntegrationProfileEntryPredefinedEntryVariant] = None
 
 
 class IntegrationProfileEntryIntegrationEntry(BaseModel):
