@@ -78,6 +78,8 @@ class CustomProfileEntryPredefinedEntryVariant(BaseModel):
 
     type: Literal["PromptTopic"]
 
+    description: Optional[str] = None
+
 
 class CustomProfileEntryPredefinedEntry(BaseModel):
     id: str
@@ -245,6 +247,8 @@ class PredefinedProfileEntryPredefinedEntryVariant(BaseModel):
 
     type: Literal["PromptTopic"]
 
+    description: Optional[str] = None
+
 
 class PredefinedProfileEntryPredefinedEntry(BaseModel):
     id: str
@@ -404,6 +408,8 @@ class IntegrationProfileEntryPredefinedEntryVariant(BaseModel):
     topic_type: Literal["Intent", "Content"]
 
     type: Literal["PromptTopic"]
+
+    description: Optional[str] = None
 
 
 class IntegrationProfileEntryPredefinedEntry(BaseModel):
