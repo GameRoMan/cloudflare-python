@@ -93,6 +93,7 @@ if TYPE_CHECKING:
         dns_firewall,
         healthchecks,
         security_txt,
+        smart_shield,
         abuse_reports,
         email_routing,
         magic_transit,
@@ -161,6 +162,7 @@ if TYPE_CHECKING:
     from .resources.zones.zones import ZonesResource, AsyncZonesResource
     from .resources.custom_pages import CustomPagesResource, AsyncCustomPagesResource
     from .resources.security_txt import SecurityTXTResource, AsyncSecurityTXTResource
+    from .resources.smart_shield import SmartShieldResource, AsyncSmartShieldResource
     from .resources.abuse_reports import AbuseReportsResource, AsyncAbuseReportsResource
     from .resources.images.images import ImagesResource, AsyncImagesResource
     from .resources.queues.queues import QueuesResource, AsyncQueuesResource
@@ -516,6 +518,12 @@ class Cloudflare(SyncAPIClient):
         from .resources.rate_limits import RateLimitsResource
 
         return RateLimitsResource(self)
+
+    @cached_property
+    def smart_shield(self) -> SmartShieldResource:
+        from .resources.smart_shield import SmartShieldResource
+
+        return SmartShieldResource(self)
 
     @cached_property
     def waiting_rooms(self) -> WaitingRoomsResource:
@@ -1350,6 +1358,12 @@ class AsyncCloudflare(AsyncAPIClient):
         return AsyncRateLimitsResource(self)
 
     @cached_property
+    def smart_shield(self) -> AsyncSmartShieldResource:
+        from .resources.smart_shield import AsyncSmartShieldResource
+
+        return AsyncSmartShieldResource(self)
+
+    @cached_property
     def waiting_rooms(self) -> AsyncWaitingRoomsResource:
         from .resources.waiting_rooms import AsyncWaitingRoomsResource
 
@@ -2110,6 +2124,12 @@ class CloudflareWithRawResponse:
         return RateLimitsResourceWithRawResponse(self._client.rate_limits)
 
     @cached_property
+    def smart_shield(self) -> smart_shield.SmartShieldResourceWithRawResponse:
+        from .resources.smart_shield import SmartShieldResourceWithRawResponse
+
+        return SmartShieldResourceWithRawResponse(self._client.smart_shield)
+
+    @cached_property
     def waiting_rooms(self) -> waiting_rooms.WaitingRoomsResourceWithRawResponse:
         from .resources.waiting_rooms import WaitingRoomsResourceWithRawResponse
 
@@ -2687,6 +2707,12 @@ class AsyncCloudflareWithRawResponse:
         from .resources.rate_limits import AsyncRateLimitsResourceWithRawResponse
 
         return AsyncRateLimitsResourceWithRawResponse(self._client.rate_limits)
+
+    @cached_property
+    def smart_shield(self) -> smart_shield.AsyncSmartShieldResourceWithRawResponse:
+        from .resources.smart_shield import AsyncSmartShieldResourceWithRawResponse
+
+        return AsyncSmartShieldResourceWithRawResponse(self._client.smart_shield)
 
     @cached_property
     def waiting_rooms(self) -> waiting_rooms.AsyncWaitingRoomsResourceWithRawResponse:
@@ -3268,6 +3294,12 @@ class CloudflareWithStreamedResponse:
         return RateLimitsResourceWithStreamingResponse(self._client.rate_limits)
 
     @cached_property
+    def smart_shield(self) -> smart_shield.SmartShieldResourceWithStreamingResponse:
+        from .resources.smart_shield import SmartShieldResourceWithStreamingResponse
+
+        return SmartShieldResourceWithStreamingResponse(self._client.smart_shield)
+
+    @cached_property
     def waiting_rooms(self) -> waiting_rooms.WaitingRoomsResourceWithStreamingResponse:
         from .resources.waiting_rooms import WaitingRoomsResourceWithStreamingResponse
 
@@ -3847,6 +3879,12 @@ class AsyncCloudflareWithStreamedResponse:
         from .resources.rate_limits import AsyncRateLimitsResourceWithStreamingResponse
 
         return AsyncRateLimitsResourceWithStreamingResponse(self._client.rate_limits)
+
+    @cached_property
+    def smart_shield(self) -> smart_shield.AsyncSmartShieldResourceWithStreamingResponse:
+        from .resources.smart_shield import AsyncSmartShieldResourceWithStreamingResponse
+
+        return AsyncSmartShieldResourceWithStreamingResponse(self._client.smart_shield)
 
     @cached_property
     def waiting_rooms(self) -> waiting_rooms.AsyncWaitingRoomsResourceWithStreamingResponse:
