@@ -103,7 +103,6 @@ if TYPE_CHECKING:
         bot_management,
         cloudforce_one,
         dcv_delegation,
-        email_security,
         load_balancers,
         cloud_connector,
         durable_objects,
@@ -208,7 +207,6 @@ if TYPE_CHECKING:
     from .resources.secrets_store.secrets_store import SecretsStoreResource, AsyncSecretsStoreResource
     from .resources.waiting_rooms.waiting_rooms import WaitingRoomsResource, AsyncWaitingRoomsResource
     from .resources.cloudforce_one.cloudforce_one import CloudforceOneResource, AsyncCloudforceOneResource
-    from .resources.email_security.email_security import EmailSecurityResource, AsyncEmailSecurityResource
     from .resources.load_balancers.load_balancers import LoadBalancersResource, AsyncLoadBalancersResource
     from .resources.origin_post_quantum_encryption import (
         OriginPostQuantumEncryptionResource,
@@ -462,12 +460,6 @@ class Cloudflare(SyncAPIClient):
         from .resources.dns import DNSResource
 
         return DNSResource(self)
-
-    @cached_property
-    def email_security(self) -> EmailSecurityResource:
-        from .resources.email_security import EmailSecurityResource
-
-        return EmailSecurityResource(self)
 
     @cached_property
     def email_routing(self) -> EmailRoutingResource:
@@ -1314,12 +1306,6 @@ class AsyncCloudflare(AsyncAPIClient):
         return AsyncDNSResource(self)
 
     @cached_property
-    def email_security(self) -> AsyncEmailSecurityResource:
-        from .resources.email_security import AsyncEmailSecurityResource
-
-        return AsyncEmailSecurityResource(self)
-
-    @cached_property
     def email_routing(self) -> AsyncEmailRoutingResource:
         from .resources.email_routing import AsyncEmailRoutingResource
 
@@ -2092,12 +2078,6 @@ class CloudflareWithRawResponse:
         return DNSResourceWithRawResponse(self._client.dns)
 
     @cached_property
-    def email_security(self) -> email_security.EmailSecurityResourceWithRawResponse:
-        from .resources.email_security import EmailSecurityResourceWithRawResponse
-
-        return EmailSecurityResourceWithRawResponse(self._client.email_security)
-
-    @cached_property
     def email_routing(self) -> email_routing.EmailRoutingResourceWithRawResponse:
         from .resources.email_routing import EmailRoutingResourceWithRawResponse
 
@@ -2687,12 +2667,6 @@ class AsyncCloudflareWithRawResponse:
         from .resources.dns import AsyncDNSResourceWithRawResponse
 
         return AsyncDNSResourceWithRawResponse(self._client.dns)
-
-    @cached_property
-    def email_security(self) -> email_security.AsyncEmailSecurityResourceWithRawResponse:
-        from .resources.email_security import AsyncEmailSecurityResourceWithRawResponse
-
-        return AsyncEmailSecurityResourceWithRawResponse(self._client.email_security)
 
     @cached_property
     def email_routing(self) -> email_routing.AsyncEmailRoutingResourceWithRawResponse:
@@ -3286,12 +3260,6 @@ class CloudflareWithStreamedResponse:
         return DNSResourceWithStreamingResponse(self._client.dns)
 
     @cached_property
-    def email_security(self) -> email_security.EmailSecurityResourceWithStreamingResponse:
-        from .resources.email_security import EmailSecurityResourceWithStreamingResponse
-
-        return EmailSecurityResourceWithStreamingResponse(self._client.email_security)
-
-    @cached_property
     def email_routing(self) -> email_routing.EmailRoutingResourceWithStreamingResponse:
         from .resources.email_routing import EmailRoutingResourceWithStreamingResponse
 
@@ -3883,12 +3851,6 @@ class AsyncCloudflareWithStreamedResponse:
         from .resources.dns import AsyncDNSResourceWithStreamingResponse
 
         return AsyncDNSResourceWithStreamingResponse(self._client.dns)
-
-    @cached_property
-    def email_security(self) -> email_security.AsyncEmailSecurityResourceWithStreamingResponse:
-        from .resources.email_security import AsyncEmailSecurityResourceWithStreamingResponse
-
-        return AsyncEmailSecurityResourceWithStreamingResponse(self._client.email_security)
 
     @cached_property
     def email_routing(self) -> email_routing.AsyncEmailRoutingResourceWithStreamingResponse:
